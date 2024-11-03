@@ -31,10 +31,9 @@ export interface User extends Document{
     verified: string;
     verifyexpires: Date;
     isverified: boolean;
-    isAcceptedMessage: string;
+    isAcceptedMessage: boolean;
     messages: Message[];
-    createdAt: Date;
-    updatedAt: Date;
+    
 }
 
 
@@ -70,20 +69,11 @@ const UserSchema:Schema<User> =new Schema({
        default: false
     },
     isAcceptedMessage: {
-        type: String,
+        type: Boolean,
         required: true
     },
     messages: [MessageSchema],
-    createdAt: {
-        type: Date,
-        required: true,
-        default: Date.now
-    },
-    updatedAt: {
-        type: Date,
-        required: true,
-        default: Date.now
-    }
+   
 })
 
 
