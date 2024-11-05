@@ -21,7 +21,7 @@ async function dbConnect(): Promise<void> {
 
     try {
         
-      const db = await mongoose.connect(process.env.MONGODB_URI as string || "",{});
+      const db = await mongoose.connect(process.env.MONGODB_URI as string || '');
 
       connection.isConnected = db.connections[0].readyState
 
@@ -40,4 +40,4 @@ async function dbConnect(): Promise<void> {
 
 
 
-export default dbConnect
+export default dbConnect;

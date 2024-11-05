@@ -10,10 +10,10 @@ export async function sendVerifyEmail(email:string,username:string,otp:string):P
     try {
         
         await resend.emails.send({
-            from: ' <onboarding@resend.dev>',
-            to: email,
+            from: 'Acme <onboarding@resend.dev>',
+            to: 'kushalchatterjee943@gmail.com',
             subject: 'Verify your email address by otp ',
-            react: VerificationEmail({username,otp}),
+            html: `<strong>username ${username}, email : ${email}, yourotp: ${otp}</strong>`, 
         });
 
         return {

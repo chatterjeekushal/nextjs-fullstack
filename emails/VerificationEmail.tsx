@@ -1,5 +1,6 @@
 
 
+
 import {
     Body,
     Container,
@@ -7,7 +8,6 @@ import {
     Heading,
     Hr,
     Html,
-    Link,
     Preview,
     Section,
     Text,
@@ -16,12 +16,13 @@ import {
   
   interface verificationEmailProps {
     username: string;
+    email: string;
     otp: string;
   }
   
  
   
-  export default function VerificationEmail  ({ username,otp }: verificationEmailProps) {
+  export default function VerificationEmail  ({email, username,otp }: verificationEmailProps) {
     return (
       <Html>
         <Head />
@@ -36,7 +37,7 @@ import {
                 <Heading style={h1}>Verify your email address</Heading>
                 <Heading style={h1}>{username}</Heading>
                 <Text style={mainText}>
-                  Hey {username}, Thanks for starting the new AWS account creation process. We
+                  Hey {username}, Thanks for starting {email} the new AWS account creation process. We
                   want to make sure it's really you. Please enter the following
                   verification code when prompted. If you don&apos;t want to
                   create an account, you can ignore this message.

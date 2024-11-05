@@ -70,7 +70,7 @@ const UserSchema:Schema<User> =new Schema({
     },
     isAcceptedMessage: {
         type: Boolean,
-        required: true
+       
     },
     messages: [MessageSchema],
    

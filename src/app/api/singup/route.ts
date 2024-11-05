@@ -20,6 +20,7 @@ export async function POST(req: Request) {
         const existingUserverifiedbyusername = await UserModel.findOne({ username, isverified: true })
 
         if (existingUserverifiedbyusername) {
+
             return Response.json({ error: "User already exists", success: false }, { status: 500 },);
         }
 
@@ -32,6 +33,7 @@ export async function POST(req: Request) {
         if (existingUserverifiedbyemail) {
 
             if (existingUserverifiedbyemail.isverified) {
+
                 return Response.json({ error: "User already exists with this email", success: false }, { status: 500 },);
             }
             else {
@@ -65,18 +67,18 @@ export async function POST(req: Request) {
             });
 
             await newuser.save();
+
+            
         }
 
 
-        // send verification email
         const emailResponse = await sendVerifyEmail(email, username, verifycode.toString());
 
+            if (!emailResponse.success) {
+                return Response.json({ error: "Failed to send verification email", success: false }, { status: 500 },);
+            }
 
-        if (!emailResponse.success) {
-
-            return Response.json({ error: "Failed to send verification email", success: false }, { status: 500 },);
-
-        }
+       
 
 
         return Response.json({ message: "User registered successfully", success: true }, { status: 200 },);
