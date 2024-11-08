@@ -6,4 +6,5 @@ export interface ApiResponce {
     message: string;
     isAcceptedMessage?: boolean;
     messages?:Array<Message>; 
+    error?: string[];
 }

@@ -9,7 +9,9 @@ import bcrypt from "bcryptjs";
 import { sendVerifyEmail } from "@/helpers/sendverifyemail";
 
 
-export async function POST(req: Request) {
+
+
+export async function POST(req: Request ) {
 
     await dbConnect();
 
@@ -78,12 +80,9 @@ export async function POST(req: Request) {
                 return Response.json({ error: "Failed to send verification email", success: false }, { status: 500 },);
             }
 
-       
+    
 
-
-        return Response.json({ message: "User registered successfully", success: true }, { status: 200 },);
-
-
+        return Response.json({ success: true, message: "User registered successfully" }, { status: 200 },);
 
     } catch (error) {
 
